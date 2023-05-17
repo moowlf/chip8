@@ -3,7 +3,12 @@
 file(GLOB_RECURSE sources *.cpp)
 
 # Get dependencies
-find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets)
+
+find_package(Qt6 COMPONENTS Core Gui Widgets)
+
+if (NOT Qt6_FOUND)
+    message(FATAL_ERROR "Set your CMAKE_PREFIX_PATH in order to include qt library!")
+endif ()
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
